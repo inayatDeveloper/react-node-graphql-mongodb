@@ -4,6 +4,7 @@ const port = 4000
 var mongoose = require('mongoose');
 var graphqlHTTP = require('express-graphql');
 var schema = require('./graph-ql/book');
+var userSchema=require("./graph-ql/user")
 var cors = require("cors");
 app.use('*', cors());
 
