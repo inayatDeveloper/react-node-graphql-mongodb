@@ -54,6 +54,28 @@ var queryType = new GraphQLObjectType({
                     return books
                 }
             },
+            booksLimit: {
+                type: new GraphQLList(bookType),
+                args: {
+                    skip: {
+                        name: 'skip',
+                        type: GraphQLInt
+                    },
+                    limit:{
+                        name:"limit",
+                        type:GraphQLInt
+                    }
+                },
+                resolve: function (root, params) {
+
+                    const books = BookModel.find({},{},params).exec()
+                    if (!books) {
+                        throw new Error('Error')
+                    }
+                    return books
+                }
+            },
+
             book: {
                 type: bookType,
                 args: {

@@ -5,6 +5,7 @@ import Main from "./components/main"
 import Edit from './components/Edit';
 import Create from './components/Create';
  import Show from './components/Show';
+ import BookGetLimit from './components/BookGetLimit';
 const App = () => {
     return (
         <Router>
@@ -13,6 +14,7 @@ const App = () => {
                 <Route path='/edit/:id' component={Edit} />
                 <Route path='/create' component={Create} />
                 <Route path='/show/:id' component={Show} />
+                <Route path='/book/limit' component={BookGetLimit} />
             </div>
         </Router>
     );
