@@ -16,28 +16,31 @@ const GET_BOOK = gql`
 const FeedData = ({match}) => {
 
     return (
-        <Query query={GET_BOOK} variables={{skip: 0, limit: 5}} fetchPolicy="cache-and-network">
-            {({ data, fetchMore }) => (
-                <Feed
-                    entries={data || []}
-                    onLoadMore={() =>
-                        fetchMore({
-                            variables: {
-                                offset: data
-                            },
-                            updateQuery: (prev, { fetchMoreResult }) => {
-                                if (!fetchMoreResult) return prev;
-                                return Object.assign({}, prev, {
-                                    feed: [...prev.feed, ...fetchMoreResult.feed]
-                                });
-                            }
-                        })
-                    }
-                />
-            )}
+        <Query query={GET_BOOK} variables={{skip: 0, limit: 5}} >
+            {({data, fetchMore, loading, error}) => {
+                if (loading) return <h1>Loding...</h1>
+                if (error) return <h1>Error{error}</h1>
+                return (
+                    <Feed
+                        entries={data.booksLimit}
+                        onLoadMore={(skip) =>
+                            fetchMore({
+                                variables: {
+                                    skip: skip, limit: 5
+                                },
+                                updateQuery: (prev, {fetchMoreResult}) => {
+                                    if (!fetchMoreResult) return prev;
+                                    return Object.assign({}, prev, {
+                                        booksLimit: [...prev.booksLimit, ...fetchMoreResult.booksLimit]
+                                    });
+                                }
+                            })
+                        }
+                    />
+                )
+            }}
         </Query>
     )
-
 }
 
 export default FeedData;

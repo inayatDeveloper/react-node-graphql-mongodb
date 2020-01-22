@@ -1,11 +1,36 @@
 import React, {Component} from 'react';
+const Feed = ({entries, onLoadMore}) => {
+    console.log("entriesentriesentries", entries)
+    return (
 
+        <div className="container">
+            <div className="row">
 
-const Feed=({entries,onLoadMore})=>{
+                <div className="col-md-4">
 
-    console.log("entriesentriesentries",entries)
-return(<h1 onClick={(e) =>onLoadMore()}>kddk</h1>)
+                </div>
+                <div className="col-md-4">
+                    <b><p className="text-center">Books</p></b>
+                    <ul class="list-group">
+                        {
+                            entries.map((item, index) =>
+                                <li class="list-group-item">{item.title}</li>
+                            )}
+                    </ul>
+
+                    {entries.length <= 20 ?
+                        <button className="btn-primary" onClick={() => onLoadMore(entries.length)}>See
+                            more</button> : ""}
+                </div>
+                <div className="col-md-4">
+
+                </div>
+
+            </div>
+
+        </div>)
 
 }
 
 export default Feed;
+
