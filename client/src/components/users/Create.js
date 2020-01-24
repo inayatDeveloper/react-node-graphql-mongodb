@@ -7,7 +7,7 @@ const addUser = gql` mutation addUserInfo($userName:String!,$address:String!){
 }`;
 
 const CreateUser = (props) => {
-
+    
     const [userInput, setUserInput] = useReducer((state, newState) => ({...state, ...newState}), {
         userName: "",
         address: ""
@@ -16,7 +16,8 @@ const CreateUser = (props) => {
     const handleInput = (e) => {
         setUserInput({[e.target.name]: e.target.value})
     }
-
+    
+    
     let {userName, address} = userInput;
     return (
 

@@ -54,7 +54,7 @@ var queryType = new GraphQLObjectType({
                     return books
                 }
             },
-            booksLimit: {
+            booksLimit1: {
                 type: new GraphQLList(bookType),
                 args: {
                     skip: {
