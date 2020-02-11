@@ -18,6 +18,9 @@ const userType = new GraphQLObjectType({
             },
             address: {
                 type: GraphQLString
+            },
+            id:{
+                type:GraphQLString
             }
         }
     }
@@ -36,6 +39,25 @@ const queryType = new GraphQLObjectType({
                     }
                     return data;
                 }
+            },
+            user:{
+                type:userType,
+                args: {
+                    id: {
+                        name: '_id',
+                        type: GraphQLString
+                    }
+                },
+                resolve:(root,params)=>{
+            
+                    let data = userModel.findById(params.id).exec();
+                    if (!data) {
+                         throw new Error("Try again..")
+                    }
+                    return data;
+
+                }
+                
             }
         }
     }

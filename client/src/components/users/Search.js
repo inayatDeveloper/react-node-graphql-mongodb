@@ -124,19 +124,23 @@ class List extends React.Component {
         <Col lg="6">
           <h4>Tags</h4>
           <Card className="border-0">
-            <div className="bg-white border p-2 rounded">
-              {this.props.addTagsList.map(tag => (
-                <Badge color="secondary mr-2 p-2 tag-text rounded-pill text-white text-capitalize">
-                  {tag}
-                  <span
-                    className="close-btn"
-                    onClick={e => this.props.removeTags(tag)}
-                  >
-                    &nbsp;X
-                  </span>
-                </Badge>
-              ))}
-            </div>
+            {this.props.addTagsList.length > 0 ? (
+              <div className="bg-white border p-2 rounded">
+                {this.props.addTagsList.map(tag => (
+                  <Badge color="secondary mr-2 p-2 tag-text rounded-pill text-white text-capitalize">
+                    {tag}
+                    <span
+                      className="close-btn"
+                      onClick={e => this.props.removeTags(tag)}
+                    >
+                      &nbsp;X
+                    </span>
+                  </Badge>
+                ))}
+              </div>
+            ) : (
+              ""
+            )}
             <div className="p-2 tag-search-result">
               <Input
                 type="text"

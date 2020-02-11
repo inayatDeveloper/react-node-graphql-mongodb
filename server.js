@@ -15,7 +15,7 @@ mongoose.connect('mongodb://localhost/bookshop', { useNewUrlParser: true })
 
 
 app.use('/graphql', cors(), graphqlHTTP({
-    schema: schema,
+    schema: userSchema,
     rootValue: global,
     graphiql: true,
 }));
