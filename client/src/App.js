@@ -16,6 +16,7 @@ import Test from "./components/users/Test";
 import UserInfo from "./components/users/userInfo";
 import Login from "./components/users/Login";
 import Search from "./components/users/Search";
+import SubRoutes from "./components/subRoutes/SubRoutes";
 
 const GET_AUTH_USER = gql`
   query user($id: String) {
@@ -57,6 +58,7 @@ const App = ({ location }) => {
                 <Route path="/user/info" component={UserInfo} />
                 <Route path="/test" component={Test} />
                 <Route path="/search" component={Search} />
+                <Route path="/sub/routes" component={SubRoutes} />
               </div>
             </Router>
           );
