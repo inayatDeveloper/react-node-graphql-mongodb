@@ -1,5 +1,5 @@
 import React from "react";
-import "./testStyle.css";
+import "../../assets/css/testStyle.css";
 import {
   Row,
   Col,

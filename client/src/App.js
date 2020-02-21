@@ -1,22 +1,28 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  withRouter,
+  Link,
+  NavLink
+} from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/reactstrap/dist/reactstrap.full";
 import gql from "graphql-tag";
 import { Query, Mutation } from "react-apollo";
 import { useStore } from "./store/index";
-import Main from "./components/main";
-import Edit from "./components/Edit";
-import Create from "./components/Create";
-import BookGetLimit from "./components/BookGetLimit";
-import Show from "./components/Show";
-import CreateUser from "./components/users/Create";
-import UserList from "./components/users/userList";
+
 import Test from "./components/users/Test";
 import UserInfo from "./components/users/userInfo";
 import Login from "./components/users/Login";
-import Search from "./components/users/Search";
-import SubRoutes from "./components/subRoutes/SubRoutes";
+import Search from "./components/Search/Search";
+import Home from "./components/navBar/Home/Home";
+import Contact from "./components/navBar/Contact";
+import About from "./components/navBar/About";
+import Header from "./components/navBar/Header";
+import User from "./components/users/index";
+import Book from "./components/Books/Index";
 
 const GET_AUTH_USER = gql`
   query user($id: String) {
@@ -28,6 +34,7 @@ const GET_AUTH_USER = gql`
 `;
 
 const App = ({ location }) => {
+  console.log("hihihih");
   const [{ auth }, dispatch] = useStore();
   console.log("auth.....2343", auth);
   return (
@@ -43,23 +50,26 @@ const App = ({ location }) => {
         if (loading) {
           return <h1>Loading</h1>;
         } else {
+          console.log("hihihih");
           return (
             <Router>
-              <div>
-                {/* <Route exact path='/' component={Main} />
-                            <Route path='/edit/:id' component={Edit} />
-                            <Route path='/create' component={Create} />
-                            <Route path='/show/:id' component={Show} />
-                            <Route path='/book/limit' component={BookGetLimit} />
-                            <Route path='/user/create' component={CreateUser} />
-                            <Route path='/list/user' component={UserList} />
-                            */}
-                <Route path="/login" component={Login} />
+              <Header />
+              <hr />
+              <Switch>
+                {/*
+                {/* <Route exact path="/login" component={Login} />
+                <Route exact path="/test" component={Test} />
                 <Route path="/user/info" component={UserInfo} />
-                <Route path="/test" component={Test} />
+              
+                 */}
+                <Route path="/home" component={Home} />
+                <Route path="/about" component={About} />
+                <Route path="/contact" component={Contact} />
+                <Route path="/user" component={User} />
+                <Route path="/user" component={User} />
+                <Route path="/book" component={Book} />
                 <Route path="/search" component={Search} />
-                <Route path="/sub/routes" component={SubRoutes} />
-              </div>
+              </Switch>
             </Router>
           );
         }
