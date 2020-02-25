@@ -13,7 +13,7 @@ import gql from "graphql-tag";
 import { Query, Mutation } from "react-apollo";
 import { useStore } from "./store/index";
 
-import Test from "./components/users/Test";
+import Test from "./components/test/test";
 import UserInfo from "./components/users/userInfo";
 import Login from "./components/users/Login";
 import Search from "./components/Search/Search";
@@ -53,8 +53,8 @@ const App = ({ location }) => {
           console.log("hihihih");
           return (
             <Router>
-              <Header />
-              <hr />
+              {/* <Header />
+              <hr /> */}
               <Switch>
                 {/*
                 {/* <Route exact path="/login" component={Login} />
@@ -69,6 +69,7 @@ const App = ({ location }) => {
                 <Route path="/user" component={User} />
                 <Route path="/book" component={Book} />
                 <Route path="/search" component={Search} />
+                <Route path="/test" component={Test} />
               </Switch>
             </Router>
           );

@@ -1,0 +1,20 @@
+.mainContainer {
+    background-color: #f1f1f1;
+    padding: 30px 400px;
+}
+
+.subContainer {
+    padding: 30px 100px;
+    background: white;
+}
+
+.furtherSubContainer {
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.subTitle {
+    margin-top: -10px
+}
